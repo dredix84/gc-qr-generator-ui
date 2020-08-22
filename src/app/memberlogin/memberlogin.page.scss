@@ -1,0 +1,31 @@
+.contents {
+    position: relative;
+    text-align: center;
+    top: 15%;
+}
+
+.input {
+    border: none;
+    box-shadow: 1px 5px 10px rgb(211, 211, 211);
+    border-radius: 2px;
+    padding: 15px 0px;
+    padding-left: 15px;
+    width: 50%;
+    margin-top: 10px;
+    font-size: 20px;
+    letter-spacing: 0.5px;
+}
+
+.btn {
+    position: relative;
+    color: white;
+    margin-top: 60px;
+    background-color: black;
+    padding: 15px 0px;
+    width: 50%;
+    border-radius: 2px;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    box-shadow: 1px 5px 10px rgb(0, 0, 0);
+}

@@ -1,0 +1,61 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <div class="toolbar">
+      <h3>
+        QR-CODE
+      </h3>
+      <button routerLink="/login" class="signoutbtn" (click)="signOut()">
+        SIGN OUT
+      </button>
+      <button routerLink="/memberlogin" class="memberbtn">MEMBER LOGIN</button>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <form #form="ngForm">
+    <input
+      id="fileLoader"
+      type="file"
+      name="xlsx"
+      (change)="handleFileInput($event)"
+      ngModel
+      required
+    />
+    <!-- <button class="btn" ion-button full (click)="extractData()"><span class="qrcode">CREATE QR CODE</span></button> -->
+    <input
+      class="btn"
+      type="button"
+      id="btnOpenFileDialog"
+      value="CREATE QR CODE"
+      (click)="openfileDialog();"
+    />
+  </form>
+  <div class="space"></div>
+
+  <div *ngIf="auth.user$ | async as user">
+    <ion-card class="xlsxdata" *ngFor="let file of file2Data">
+      <!-- <ngx-qrcode width="150" [elementType]="elementType" [value]="file.track1"> </ngx-qrcode> -->
+      <button
+        class="sharebtn"
+        ion-button
+        full
+        (click)="shareData(file.id)"
+      >
+        <span class="qrcode">SHARE</span>
+      </button>
+      <div class="filedata">
+        GROUP_ID: {{file.groupId}}
+      </div>
+      <div class="filedata">
+        MEMBER_ID: {{file.memberId}}
+      </div>
+      <div class="filedata">
+        FULL_NAME: {{file.fullName}}
+      </div>
+      <div class="filedata">
+        EXP_TIME: {{file.expTime}}
+      </div>
+    </ion-card>
+  </div>
+</ion-content>

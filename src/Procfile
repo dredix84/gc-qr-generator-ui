@@ -1,0 +1,1 @@
+web: inoic serve --port $PORT --nobrowser --noliverload --noopen

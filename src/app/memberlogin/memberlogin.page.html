@@ -1,0 +1,32 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>memberlogin</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content>
+  <div class="contents">
+    <form #form="ngForm" (ngSubmit)="login(form)">
+      <input
+        placeholder="Member ID"
+        type="text"
+        class="input"
+        name="memberId"
+        ngModel
+        required
+      />
+      <!-- <div class="validation-errors">
+      <div *ngFor="let validation of validation_messages.email">
+        <div class="error-message" *ngIf="validations_form.get('email').hasError(validation.type) && (validations_form.get('email').dirty || validations_form.get('email').touched)">
+          {{ validation.message }}
+        </div>
+      </div>
+    </div> -->
+      <br />
+      <button class="btn" type="submit">Login</button>
+      <br />
+      <br />
+      <br />
+    </form>
+  </div>
+</ion-content>

@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>qrcode</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h2 *ngIf="!user && !token">You are not authorized to view this content.</h2>
+  <h2 *ngIf="message">{{message}}</h2>
+
+  <!-- <ion-card class="xlsxdata" *ngFor="let file of filesData"> -->
+  <div class="qrcode" *ngIf="!message && user && !token">
+    <div *ngIf="qrdata">
+      <ngx-qrcode
+        width="300"
+        [elementType]="elementType"
+        [value]="qrdata"
+        cssClass="qr"
+      >
+      </ngx-qrcode>
+    </div>
+  </div>
+
+  <div class="qrcode" *ngIf="token">
+    <div *ngIf="qrdata">
+      <ngx-qrcode
+        width="300"
+        [elementType]="elementType"
+        [value]="qrdata"
+        cssClass="qr"
+      >
+      </ngx-qrcode>
+    </div>
+  </div>
+
+  <div class="link" *ngIf="!message && user && !token">
+    <div>
+      <span
+        ><button
+          *ngIf="filesData"
+          class="copybtn"
+          (click)="copyLink(filesData[0].expTime)"
+        >
+          Copy Link
+        </button></span
+      >
+      <!-- <span>  <input class="input" type="text" name="link" value="{{url}}" ></span> -->
+    </div>
+    <div *ngIf="filesData">
+      <form #form="ngForm" (ngSubmit)="sendMail(form, filesData[0].expTime)">
+        <div>
+          <input
+            class="input"
+            type="text"
+            placeholder="Enter Recipients Email Address"
+            name="mail"
+            ngModel
+            required
+          /><br />
+          <span><button class="btn" type="submit">Send</button></span>
+        </div>
+      </form>
+    </div>
+  </div>
+</ion-content>

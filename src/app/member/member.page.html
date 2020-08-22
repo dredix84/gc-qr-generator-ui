@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Member</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="space"></div>
+
+  <div *ngIf="auth.user$ | async as user">
+    <div *ngFor="let file of file3Data">
+      <div class="name">
+        <span class="memberName">Member Name: </span>
+        <span class="fullName">{{file.fullName}}</span>
+        <!-- <ngx-qrcode width="80" [elementType]="elementType" [value]="file.track1"> </ngx-qrcode> -->
+        <img class="img" src="assets/icon/qrcode.png" alt="" />
+        <button
+          class="sharebtn"
+          ion-button
+          full
+          (click)="shareData(file.id, file.expTime)"
+        >
+          <span class="qrcode">SHARE</span>
+        </button>
+      </div>
+
+      <ion-grid>
+        <ion-row>
+          <ion-col class="col">
+            <div class="heading">Group Name</div>
+            <div>{{file.groupName}}</div>
+          </ion-col>
+          <ion-col class="col">
+            <div class="heading">Member ID</div>
+            <div>{{file.memberId}}</div>
+          </ion-col>
+          <ion-col class="col">
+            <div class="heading">Created Date</div>
+            <div>{{file.createdDate}}</div>
+          </ion-col>
+          <ion-col class="col">
+            <div class="heading">Effective Date</div>
+            <div>{{file.effDate}}</div>
+          </ion-col>
+          <ion-col class="col">
+            <div class="heading">Expiry Time</div>
+            <div>{{file.expTime}}</div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </div>
+</ion-content>
